@@ -1,0 +1,12 @@
+== Bilki - Expense Tracking
+
+Bilki is a simple expense tracking web app written in Ruby on Rails
+
+
+* Track your expenses & incomes
+
+* Categorize spending & payment types
+
+* Get charts to analyse trends
+
+* Works on Mobile (thanks to Bootstrap, but you can also save it to the home screen)

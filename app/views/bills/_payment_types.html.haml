@@ -1,0 +1,13 @@
+= f.label :payment_method, "Rodzaj płatności", class: "sr-only"
+%div.btn-group{'data-toggle' => 'buttons'}
+  %label.btn.btn-default{title: "Płatność kartą"}
+    = f.radio_button :payment_method, "card"
+    %span.icon.icon-credit
+
+  %label.btn.btn-default{title: "Płatność gotówką"}
+    = f.radio_button :payment_method, "cash"
+    %span.icon.icon-coin
+
+  %label.btn.btn-default{title: "Płatność przelewem"}
+    = f.radio_button :payment_method, "bank"
+    %span.icon.icon-screen

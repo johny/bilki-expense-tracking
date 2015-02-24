@@ -1,0 +1,44 @@
+!!!
+%html{lang: "pl"}
+  %head
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0, user-scalable=no"}
+    %title= content_for?(:title) ? yield(:title) : 'Bilki'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Bills App'}"}
+
+    %meta{name: "apple-mobile-web-app-capable", content: "yes"}
+    %meta{name: "mobile-web-app-capable", content: "yes"}
+    %meta{name: "apple-mobile-web-app-title", content: "Bilki"}
+    %meta{name: "apple-mobile-web-app-capable", content: "yes"}
+    %meta{name: "apple-mobile-web-app-status-bar-style", content: "black"}
+
+    %link{href: asset_path('icons/generic_icon_196.png'), rel: "shortcut icon", sizes: "196x196"}
+
+    %link{href: asset_path('icons/ios_icon_152.png'), rel: "apple-touch-icon", sizes: "152x152"}
+    %link{href: asset_path('icons/ios_icon_114.png'), rel: "apple-touch-icon", sizes: "114x114"}
+    %link{href: asset_path('icons/ios_icon_72.png'), rel: "apple-touch-icon", sizes: "72x72"}
+    %link{href: asset_path('icons/ios_icon_52.png'), rel: "apple-touch-icon"}
+
+    / iPhone 5
+    %link{href: asset_path('icons/apple-touch-startup-image-640x1096.png'), media: "(device-width: 320px) and ("}/
+
+    / iPhone 4 (Retina)
+    %link{href: asset_path('icons/apple-touch-startup-image-640x920.png'), media: "(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)", rel: "apple-touch-startup-image"}/
+
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+
+    - if content_for? :head
+      = yield :head
+
+    = csrf_meta_tags
+  %body
+    - if Rails.env == "production"
+      = render 'layouts/gat'
+    = render 'layouts/header'
+    %div.container
+      %main{:role => "main"}
+        = render 'layouts/messages'
+        - if content_for? :intro
+          = yield :intro
+        = yield
+    = render 'layouts/footer'

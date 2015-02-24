@@ -1,0 +1,14 @@
+$brand-primary: #1abc9c;
+
+$navbar-inverse-color: #1abc9c;
+$navbar-inverse-link-color: $navbar-inverse-color;
+$navbar-inverse-link-hover-color: #fff;
+$navbar-inverse-bg: #16a085;
+
+
+@import "bootstrap";
+
+@import "icons";
+
+@import "bilki";
+@import "landing";

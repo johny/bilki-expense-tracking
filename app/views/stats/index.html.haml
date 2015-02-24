@@ -1,0 +1,15 @@
+%div.page-header
+  %h1 Statystyki
+
+
+%div#stats.page-content
+
+  %div.row
+    %div.col-md-12
+      %div.panel.panel-default
+        %div.panel-heading
+          %h3.panel-title Miesięczne wydatki
+        %div.panel-body
+          %canvas#spending{height: 400}
+          = render partial: 'stats/spending'
+

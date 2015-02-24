@@ -1,0 +1,14 @@
+<script>
+  var SpendingData = {
+    labels : <%= raw @spending[:months].to_json %>,
+    datasets : [
+      {
+        fillColor : "rgba(220,220,220,0.5)",
+        strokeColor : "rgba(220,220,220,1)",
+        pointColor : "rgba(220,220,220,1)",
+        pointStrokeColor : "#fff",
+        data : <%= raw @spending[:data].to_json %>
+      }
+    ]
+  }
+</script>

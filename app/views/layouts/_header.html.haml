@@ -1,0 +1,36 @@
+%header
+  %nav.navbar.navbar-default.navbar-fixed-top
+    .container
+      .navbar-header
+        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Pokaż nawigację
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to root_path, class: 'navbar-brand' do
+          Bilki.pl
+          %sup.beta beta
+      .collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          - if user_signed_in?
+            %li=link_to "Dzisiaj", today_bills_path
+            %li
+              =link_to month_bills_path do
+                Ten miesiąc:
+                %strong #{humanized_money_with_symbol( current_user.current_month_expenses)}
+            %li= link_to "Wszystkie wydatki", bills_path
+            %li= link_to "Statystyki", stats_path
+
+          - else
+            %li=link_to "Strona główna"
+
+        %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            %li= link_to "Hello #{current_user.name}", edit_user_registration_path
+            %li= link_to "Wyloguj się", destroy_user_session_path, method: :delete
+          - else
+            %li= link_to "Zaloguj się", new_user_session_path
+            %li= link_to "Zarejestruj się", new_user_registration_path
+
+
+

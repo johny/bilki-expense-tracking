@@ -1,0 +1,30 @@
+%div.page-header
+  %h1 Edycja wydatku
+
+%div.page-content
+
+  = form_for @bill, html: {class: ''} do |f|
+    %div.well
+      %div.row
+        %div.form-group.col-xs-12.col-sm-6.col-md-3
+          = f.label :amount, "Kwota:"
+          %div.input-group
+            = f.number_field :amount, class: 'form-control', placeholder: "np. 10,40", min: 0.01, max: 1000000, step: 0.01, value: @bill.amount.to_f
+            %span.input-group-addon
+              zł
+
+        %div.form-group.col-xs-12.col-sm-6.col-md-3
+          = f.label :day, "Dzień:"
+          = f.date_field :day, class: "form-control"
+
+        %div.form-group.col-xs-12.col-sm-6.col-md-3
+          = f.label :description, "Opis:"
+          = f.text_field :description, class: 'form-control', placeholder: "np. Zakupy w Tesco"
+
+        %div.form-group.col-xs-12.col-sm-6.col-md-3
+          = f.label :payment_method, "Typ płatności:"
+          %div
+            = render partial: 'bills/payment_types', locals: {f: f}
+
+        %div.form-group.col-xs-12.col-sm-6
+          = f.submit 'Zapisz wydatek', class: 'btn btn-primary btn-block btn-bill', data: {'loading-text' => 'Zapisywanie...'}

@@ -1,0 +1,10 @@
+%tr
+  %td= humanized_money_with_symbol(bill.amount)
+  %td
+    - unless bill.payment_method.nil?
+      = payment_method(bill.payment_method)
+  %td= bill.day
+  %td= bill.description
+  %td
+    = link_to "edytuj", edit_bill_path(bill), class: "btn btn-default"
+    = link_to "usuń", bill_path(bill), method: :delete, class: "btn btn-danger"

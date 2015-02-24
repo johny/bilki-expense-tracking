@@ -1,0 +1,11 @@
+%div.page-header
+  %h1
+    Wszystkie wydatki
+
+%div.page-content
+
+  - if @bills.size > 0
+    = render 'list'
+
+  - else
+    %p Nie masz jeszcze wydatków w systemie

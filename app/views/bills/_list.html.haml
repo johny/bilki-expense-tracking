@@ -1,0 +1,21 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th kiedy
+      %th wydatek
+      %th płatność
+      %th opis
+      %th
+  %tbody
+    - @bills.each do |bill|
+      %tr
+        %td= simple_bill_time(bill.day)
+        %td
+          %strong= humanized_money_with_symbol(bill.amount)
+        %td
+          - unless bill.payment_method.nil?
+            = payment_method(bill.payment_method)
+        %td= bill.description
+        %td
+          = link_to "edytuj", edit_bill_path(bill), class: "btn btn-xs btn-default"
+          = link_to "usuń", bill_path(bill), method: :delete, class: "btn btn-xs btn-danger"
